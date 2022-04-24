@@ -5,6 +5,11 @@ on:
     tags:
       - v*
 
+env:
+  CHANGELOG_FILE: publish.md
+  PRE_RELEASE: true
+  RELEASE_NAME_PREFIX: NebulaeCraftMod
+
 permissions:
   contents: write
 
@@ -33,3 +38,11 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         prerelease: true
         tag: ${{ github.ref_name }}
+        
+    - name: Release
+      uses: docker://antonyurchenko/git-release:latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        args: build/libs/*.jar
+ 
