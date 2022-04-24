@@ -39,3 +39,5 @@ jobs:
         artifacts: "build/libs/*.jar"
         bodyFile: "publish.md"
         token: ${{ secrets.GITHUB_TOKEN }}
+        prerelease: true
+        tag: pre
