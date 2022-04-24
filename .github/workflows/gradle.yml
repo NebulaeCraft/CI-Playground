@@ -3,7 +3,7 @@ name: Build with Gradle
 on:
   create:
     tags:
-      - v*
+      - "v[0-9]+.[0-9]+.[0-9]+"
 
 env:
   CHANGELOG_FILE: publish.md
@@ -31,10 +31,10 @@ jobs:
     - name: Execute Gradle build
       run: ./gradlew build
       
-    - name: Release
-      uses: docker://antonyurchenko/git-release:latest
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: meeDamian/github-release@2.0
       with:
-        args: build/libs/*.jar
- 
+        token: ${{ secrets.GITHUB_TOKEN }}
+        tag: ${{ github.refs_name }}
+        prerelease: true
+        files: build/libs/*.jar
+        body: publish.md
