@@ -30,15 +30,7 @@ jobs:
     
     - name: Execute Gradle build
       run: ./gradlew build
-  
-    - uses: ncipollo/release-action@v1
-      with:
-        artifacts: "build/libs/*.jar"
-        bodyFile: "publish.md"
-        token: ${{ secrets.GITHUB_TOKEN }}
-        prerelease: true
-        tag: ${{ github.ref_name }}
-        
+      
     - name: Release
       uses: docker://antonyurchenko/git-release:latest
       env:
