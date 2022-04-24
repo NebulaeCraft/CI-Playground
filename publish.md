@@ -6,4 +6,6 @@
 
 ------
 
-Copyright 2017-2022 NebulaeCraft  All Rights Reserved.
+Copyright 2017-2022 NebulaeCraft
+
+All Rights Reserved.
