@@ -40,4 +40,3 @@ jobs:
         bodyFile: "publish.md"
         token: ${{ secrets.GITHUB_TOKEN }}
         prerelease: true
-        tag: pre
